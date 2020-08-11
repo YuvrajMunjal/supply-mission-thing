@@ -12,7 +12,7 @@ function preload()
 }
 
 function setup() {	
-	createCanvas(800, 700);
+	createCanvas(900, 700);
 	
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
@@ -32,7 +32,7 @@ function setup() {
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
 	World.add(world, packageBody);
 
-
+	
 
 	
 
@@ -43,7 +43,7 @@ function setup() {
 
 	Engine.run(engine);
 	
-  
+
 }
 
 
@@ -54,13 +54,14 @@ function draw() {
   packageSprite.y= packageBody.position.y 
   ellipseMode(RADIUS)
   drawSprites();
+
  
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-	packageBody = Bodies.circle({isStatic:false});
-
+	Matter.Body.setStatic(packageBody,false);
+	
   }
 }
 
